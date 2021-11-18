@@ -106,6 +106,24 @@ Accelerate a car
 To complete the race logic, find all the TODO tags in index.js and read the instructions.
 
 ####################################### run ################################
+To run the server, locate your operating system and run the associated command in your terminal at the root of the project.
+
+Your OS	Command to start the API
+Mac	ORIGIN_ALLOWED=http://localhost:3000 ./bin/server-osx
+Windows	ORIGIN_ALLOWED=http://localhost:3000 ./bin/server.exe
+Linux (Ubuntu, etc..)	ORIGIN_ALLOWED=http://localhost:3000 ./bin/server-linux
+If you are on an older OS and the above command doesn't run for you - or if you know that you are running a 32bit system - add -32 to the end of the file name. For reference, here are the same commands but for a 32-bit system.
+
+32 Bit Systems Only!	Command to start the API
+Mac	ORIGIN_ALLOWED=http://localhost:3000 ./bin/server-osx-32
+Windows	ORIGIN_ALLOWED=http://localhost:3000 ./bin/server-32.exe
+Linux (Ubuntu, etc..)	ORIGIN_ALLOWED=http://localhost:3000 ./bin/server-linux-32
+Note that this process will use your terminal tab, so you will have to open a new tab and navigate back to the project root to start the front end.
+
+Start the Frontend
+First, run your preference of npm install && npm start or yarn && yarn start at the root of this project. Then you should be able to access http://localhost:3000.
+
+####################################### output ################################
 <img width="1281" alt="Screenshot 2021-11-18 at 23 04 54" src="https://user-images.githubusercontent.com/18313675/142504519-d9fd80da-d3fa-4201-9485-da0d450e4b9f.png">
 
 
