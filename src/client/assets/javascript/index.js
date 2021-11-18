@@ -76,11 +76,9 @@ async function delay(ms) {
 // This async function controls the flow of the race, add the logic and error handling
 async function handleCreateRace() {
   // render starting UI
-  renderAt("#race", renderRaceStartView());
-
   // TODO - Get player_id and track_id from the store
-  const playerId = store.player_id;
-  const trackId = strore.player_id;
+  const playerId = parseInt(store.player_id);
+  const trackId = parseInt(store.player_id);
   if (!playerId || !trackId) {
     alert("Please select racer and track to start the race!");
     return;
@@ -88,8 +86,8 @@ async function handleCreateRace() {
   try {
     // const race = TODO - invoke the API call to create the race, then save the result
     const race = await createRace(playerId, trackId);
-
-    renderAt("#race", renderRaceStartView(race.Track, race.Cars));
+	console.log("asma the race have",race);
+    renderAt("#race", renderRaceStartView(race.Track, race.playerId));
     // TODO - update the store with the race id
     store.race_id = parseInt(race.ID) - 1;
     // The race has been created, now start the countdown
@@ -99,8 +97,8 @@ async function handleCreateRace() {
     await startRace(store.race_id);
     // TODO - call the async function runRace
     await runRace(store.race_id);
-  } catch (err) {
-    console.log("Error with handleCreateRace:: ", err);
+  } catch (error) {
+    console.log("Error with handleCreateRace:: ", error);
   }
 }
 
@@ -115,13 +113,13 @@ function runRace(raceID) {
 	*/
       try {
         const race = await getRace(raceID);
-        console.log("race.status: ", raceStatus.status);
-        if (raceStatus.status === "in-progress") {
+        console.log("race.status: ", race.status);
+        if (race.status === "in-progress") {
           renderAt("#leaderBoard", raceProgress(race.positions));
         } else if (race.status === "finished") {
           clearInterval(intervel);
           renderAt("#race", resultsView(race.positions));
-          reslove(race);
+		  reslove(race);
           /* 
 		TODO - if the race info status property is "finished", run the following:
 
@@ -266,6 +264,7 @@ function renderCountdown(count) {
 }
 
 function renderRaceStartView(track, racers) {
+	console.log("asma show track",track);
   return `
 		<header>
 			<h1>Race: ${track.name}</h1>
@@ -300,7 +299,7 @@ function resultsView(positions) {
 }
 
 function raceProgress(positions) {
-  let userPlayer = positions.find((e) => e.id === store.player_id);
+  let userPlayer = positions.find((e) => e.id === parseInt(store.player_id));
   userPlayer.driver_name += " (you)";
 
   positions = positions.sort((a, b) => (a.segment > b.segment ? -1 : 1));
