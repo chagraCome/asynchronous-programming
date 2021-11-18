@@ -123,7 +123,7 @@ function runRace(raceID) {
 
 		clearInterval(raceInterval) // to stop the interval from repeating
 		renderAt('#race', resultsView(res.positions)) // to render the results view
-		reslove(res) // resolve the promise
+		resolve(res) // resolve the promise
 	*/
         }
       } catch (error) {
