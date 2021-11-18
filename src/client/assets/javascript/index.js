@@ -112,13 +112,12 @@ function runRace(raceID) {
 	*/
       try {
         const race = await getRace(raceID);
-        console.log("race.status: ", race.status);
         if (race.status === "in-progress") {
           renderAt("#leaderBoard", raceProgress(race.positions));
         } else if (race.status === "finished") {
           clearInterval(intervel);
           renderAt("#race", resultsView(race.positions));
-		  reslove(race);
+		      resolve(race);
           /* 
 		TODO - if the race info status property is "finished", run the following:
 
