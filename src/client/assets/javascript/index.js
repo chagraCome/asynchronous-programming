@@ -128,7 +128,7 @@ function runRace(raceID) {
 	*/
         }
       } catch (error) {
-        console.log("problem in raceInterval:: ", error);
+        console.log("problem in raceInterval runRace: ", error);
       }
     }, 500);
   });
@@ -376,7 +376,7 @@ function createRace(player_id, track_id) {
     body: JSON.stringify(body),
   })
     .then((res) => res.json())
-    .catch((err) => console.log("Problem with createRace request::", err));
+    .catch((err) => console.log("Problem with createRace request:", err));
 }
 
 function getRace(id) {
@@ -392,7 +392,6 @@ function startRace(id) {
       method: "POST",
       ...defaultFetchOpts(),
     })
-      //.then(res => res.json())
       .catch((err) => console.log("Problem with getRace request::", err))
   );
 }
