@@ -103,5 +103,8 @@ Begin a race
 Accelerate a car
 
 - Returns nothing
-
 To complete the race logic, find all the TODO tags in index.js and read the instructions.
+
+####################################### run ################################
+<img width="1281" alt="Screenshot 2021-11-18 at 23 04 54" src="https://user-images.githubusercontent.com/18313675/142504519-d9fd80da-d3fa-4201-9485-da0d450e4b9f.png">
+
