@@ -80,13 +80,12 @@ async function handleCreateRace() {
   const playerId = parseInt(store.player_id);
   const trackId = parseInt(store.player_id);
   if (!playerId || !trackId) {
-    alert("Please select racer and track to start the race!");
+    alert("Please select both racer and track!");
     return;
   }
   try {
     // const race = TODO - invoke the API call to create the race, then save the result
     const race = await createRace(playerId, trackId);
-	console.log("asma the race have",race);
     renderAt("#race", renderRaceStartView(race.Track, race.playerId));
     // TODO - update the store with the race id
     store.race_id = parseInt(race.ID) - 1;
@@ -193,9 +192,10 @@ function handleSelectTrack(target) {
 }
 
 function handleAccelerate() {
-  console.log("accelerate button clicked");
   // TODO - Invoke the API call to accelerate
-  accelerate(store.race_id);
+   accelerate(store.race_id)
+  .then(()=>console.log("accelerate button clicked"))
+  .catch((err) => console.log("problem with handleAccelerate",err))
 }
 
 // HTML VIEWS ------------------------------------------------
@@ -264,7 +264,6 @@ function renderCountdown(count) {
 }
 
 function renderRaceStartView(track, racers) {
-	console.log("asma show track",track);
   return `
 		<header>
 			<h1>Race: ${track.name}</h1>
@@ -359,10 +358,7 @@ function getTracks() {
 function getRacers() {
   // GET request to `${SERVER}/api/cars`
   return fetch(`${SERVER}/api/cars`)
-    .then((response) => {
-      console.log(response.json);
-      return response.json();
-    })
+    .then((response) => response.json())
     .catch((error) => {
       console.log(error);
     });
