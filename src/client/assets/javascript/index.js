@@ -112,6 +112,7 @@ function runRace(raceID) {
 	*/
       try {
         const race = await getRace(raceID);
+        console.log("race.status: ", race.status);
         if (race.status === "in-progress") {
           renderAt("#leaderBoard", raceProgress(race.positions));
         } else if (race.status === "finished") {
