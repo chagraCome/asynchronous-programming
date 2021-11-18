@@ -108,3 +108,15 @@ To complete the race logic, find all the TODO tags in index.js and read the inst
 ####################################### run ################################
 <img width="1281" alt="Screenshot 2021-11-18 at 23 04 54" src="https://user-images.githubusercontent.com/18313675/142504519-d9fd80da-d3fa-4201-9485-da0d450e4b9f.png">
 
+
+
+
+![image](https://user-images.githubusercontent.com/18313675/142505115-f11856dd-55e7-4003-9fb1-af6d4e362db0.png)
+
+
+
+
+![image](https://user-images.githubusercontent.com/18313675/142505325-0b4f3dc4-6fcc-4751-b99f-bbd1b9884b64.png)
+
+
+![image](https://user-images.githubusercontent.com/18313675/142505487-b5b3f3d9-9c4b-486b-80b3-3d0fd1efadb4.png)
