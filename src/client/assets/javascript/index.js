@@ -356,7 +356,13 @@ function startRace(id) {
 }
 
 function accelerate(id) {
+	
 	// POST request to `${SERVER}/api/races/${id}/accelerate`
 	// options parameter provided as defaultFetchOpts
 	// no body or datatype needed for this request
+	return fetch(`${SERVER}/api/races/${id}/accelerate`, {
+		method: 'POST',
+		...defaultFetchOpts(),
+	})
+	.catch(err => console.log("Problem with accelerate request::", err))
 }
