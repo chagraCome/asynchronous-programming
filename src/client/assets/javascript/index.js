@@ -110,6 +110,7 @@ function runRace(raceID) {
 	*/
 	})
 	// remember to add error handling for the Promise
+	.catch(error){console.log(error)}
 }
 
 async function runCountdown() {
@@ -120,12 +121,17 @@ async function runCountdown() {
 
 		return new Promise(resolve => {
 			// TODO - use Javascript's built in setInterval method to count down once per second
-
-			// run this DOM manipulation to decrement the countdown for the user
-			document.getElementById('big-numbers').innerHTML = --timer
-
-			// TODO - if the countdown is done, clear the interval, resolve the promise, and return
-
+			const countIntervalDown= setInterval(() => {
+				// run this DOM manipulation to decrement the countdown for the user
+				if(timer!=0){
+				document.getElementById('big-numbers').innerHTML = --timer;
+				}
+				else{
+					// TODO - if the countdown is done, clear the interval, resolve the promise, and return
+					clearInterval(countIntervalDown);
+					resolve();}
+			}, 1000);
+			
 		})
 	} catch(error) {
 		console.log(error);
@@ -145,6 +151,7 @@ function handleSelectPodRacer(target) {
 	target.classList.add('selected')
 
 	// TODO - save the selected racer to the store
+	store.player_id=parseInt(target.id);
 }
 
 function handleSelectTrack(target) {
@@ -160,6 +167,7 @@ function handleSelectTrack(target) {
 	target.classList.add('selected')
 
 	// TODO - save the selected track id to the store
+	store.track_id=parseInt(target.id);
 	
 }
 
